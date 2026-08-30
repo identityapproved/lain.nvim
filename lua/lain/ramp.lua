@@ -1,0 +1,46 @@
+-- The lain palette: Back / Fore / High, plus semantic accents. Trailing number is the xterm index.
+return {
+  back_1 = "#000000", -- 16
+  back_2 = "#1A1A1A", -- 234
+  back_3 = "#2A2A2A", -- 235
+  back_4 = "#3A3A3A", -- 237
+  back_5 = "#4A4A4A", -- 239
+  back_6 = "#5A5A5A", -- 240
+  back_7 = "#6A6A6A", -- 242
+  back_8 = "#7A7A7A", -- 243
+  back_9 = "#8A8A8A", -- 245
+  back_10 = "#9A9A9A", -- 247
+  back_11 = "#AAAAAA", -- 248
+  back_12 = "#BABABA", -- 250
+  fore_1 = "#CE7688", -- 174
+  fore_2 = "#BA6A7B", -- 132
+  fore_3 = "#A05969", -- 131
+  fore_4 = "#965363", -- 95
+  fore_5 = "#8E4E5D", -- 95
+  fore_6 = "#804654", -- 95
+  fore_7 = "#6F3D49", -- 239
+  fore_8 = "#5D333C", -- 238
+  fore_9 = "#49272F", -- 236
+  fore_10 = "#381E24", -- 235
+  fore_11 = "#2A171B", -- 234
+  fore_12 = "#1D0F12", -- 233
+  high_1 = "#C1B48E", -- 144
+  high_2 = "#B5A985", -- 144
+  high_3 = "#A49978", -- 138
+  high_4 = "#968C6E", -- 101
+  high_5 = "#897F63", -- 101
+  high_6 = "#7A7158", -- 95
+  high_7 = "#69614C", -- 59
+  high_8 = "#5A5341", -- 239
+  high_9 = "#4E4838", -- 238
+  high_10 = "#403C2E", -- 237
+  high_11 = "#332F24", -- 236
+  high_12 = "#221F18", -- 234
+  accent = "#FFB1C3", -- 217
+  success_fg = "#FFDCB9", -- 223
+  success_bg = "#60401D", -- 58
+  warning_bg = "#F9F06B", -- 227
+  error_bg = "#930006", -- 88
+  error_fg = "#680003", -- 52
+  white_pure = "#FFFFFF", -- 231, off-ramp
+}

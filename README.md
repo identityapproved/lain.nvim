@@ -1,0 +1,94 @@
+# lain.nvim
+
+A Neovim colorscheme in the lain palette: black ground, rose chrome, ochre
+text.
+
+Rose carries the interface - statusline, titles, keywords. Ochre carries
+content - body text, selection, search. Comments are a neutral grey, the one
+unmistakable "this is not code" signal.
+
+Requires Neovim 0.11 or newer and a truecolor terminal.
+
+## Install
+
+With lazy.nvim:
+
+```lua
+{
+  "identityapproved/lain.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme("lain")
+  end,
+}
+```
+
+Options are passed through lazy.nvim's opts:
+
+```lua
+{
+  "identityapproved/lain.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    styles = { visual = "fill" },
+    terminal_colors = true,
+  },
+  config = function()
+    vim.cmd.colorscheme("lain")
+  end,
+}
+```
+
+Under LazyVim:
+
+```lua
+{
+  "identityapproved/lain.nvim",
+  priority = 1000,
+},
+{
+  "LazyVim/LazyVim",
+  opts = {
+    colorscheme = "lain",
+  },
+},
+```
+
+### Truecolor
+
+The lain ramps need 24-bit color. Without it the rose and ochre steps quantise
+onto the same xterm pink band and stop being distinguishable - `#A49978` lands
+on a rose, and `#C1B48E` and `#B5A985` collapse onto one index. There is no
+256-color fallback, by design.
+
+## Options
+
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `styles.visual` | `"fill"` | Selection is an ochre fill with black text. `"tint"` is a dark tint with syntax left intact. |
+| `terminal_colors` | `true` | Sets `g:terminal_color_0` through `g:terminal_color_15`. |
+
+## Terminal colors
+
+The sixteen ANSI slots are the palette's terminal mapping and match the lain
+kitty theme, so `:terminal` inside nvim and a kitty tab agree. Green renders as
+ochre, blue as grey; programs that hardcode "green means success" read as ochre
+against rose for failure - the hue still separates, only the names lie.
+
+## Tests
+
+```sh
+tests/run.sh
+```
+
+runs palette conformance (no raw hex outside `lua/lain/ramp.lua`, every token
+bound to a ramp step), WCAG contrast over every rendered pair, and a headless
+smoke load.
+
+## Notes
+
+Unofficial fan project. Not affiliated with, endorsed by, or connected to the
+rights holders of Serial Experiments Lain. The code is MIT; no artwork, frames,
+or logos are included or redistributed.

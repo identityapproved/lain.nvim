@@ -1,9 +1,16 @@
--- Group merge: editor, syntax and treesitter modules, with the Visual variant applied.
+-- Group merge: editor, syntax, treesitter, lsp, diff and plugins modules, with the Visual variant applied.
 local p = require("lain.palette")
 
 local M = {}
 
-local modules = { "lain.groups.editor", "lain.groups.syntax", "lain.groups.treesitter" }
+local modules = {
+  "lain.groups.editor",
+  "lain.groups.syntax",
+  "lain.groups.treesitter",
+  "lain.groups.lsp",
+  "lain.groups.diff",
+  "lain.groups.plugins",
+}
 
 M.highlight_groups = function(config)
   local groups = {}

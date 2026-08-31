@@ -1,0 +1,121 @@
+*lain.nvim* *lain* *colorscheme-lain*
+
+==============================================================================
+INTRODUCTION                                                    *lain-intro*
+==============================================================================
+
+lain.nvim is a dark colorscheme in the lain palette: black ground, rose
+chrome, ochre text. Rose carries the interface - statusline, titles,
+keywords. Ochre carries content - body text, selection, search. Comments
+are a neutral grey, the one unmistakable "this is not code" signal.
+Unofficial fan project. Not affiliated with, endorsed by, or connected to
+the rights holders of Serial Experiments Lain. The code is MIT; no artwork,
+frames, or logos are included or redistributed.
+
+==============================================================================
+REQUIREMENTS                                                     *lain-req*
+==============================================================================
+
+- Neovim 0.11 or newer.
+- A truecolor terminal. The lain ramps need 24-bit color, and there is no
+  256-color fallback by design: at 256 colors the rose and ochre steps
+  quantise onto the same xterm pink band and stop being distinguishable.
+
+==============================================================================
+INSTALL                                                      *lain-install*
+==============================================================================
+
+With lazy.nvim:
+>lua
+    {
+      "identityapproved/lain.nvim",
+      lazy = false,
+      priority = 1000,
+      config = function()
+        vim.cmd.colorscheme("lain")
+      end,
+    }
+<
+Under LazyVim:
+>lua
+    {
+      "identityapproved/lain.nvim",
+      priority = 1000,
+    },
+    {
+      "LazyVim/LazyVim",
+      opts = {
+        colorscheme = "lain",
+      },
+    },
+<
+==============================================================================
+OPTIONS                                                       *lain-options*
+==============================================================================
+
+Options are passed through the setup table:
+>lua
+    require("lain").setup({
+      styles = { visual = "fill" },
+      terminal_colors = true,
+    })
+<
+styles.visual (string, default "fill")        *lain-option-styles.visual*
+    The selection style. "fill": an ochre fill with black text. "tint": a
+    dark tint, syntax colors intact.
+
+terminal_colors (boolean, default true)       *lain-option-terminal_colors*
+    Sets g:terminal_color_0 through g:terminal_color_15 on load.
+
+==============================================================================
+TERMINAL                                                     *lain-terminal*
+==============================================================================
+
+With terminal_colors enabled the sixteen ANSI slots are the palette's
+terminal mapping, matching the lain kitty theme, so :terminal inside
+Neovim and a kitty tab agree. Green renders as ochre and blue as grey;
+programs that hardcode "green means success" read as ochre against rose
+for failure - the hue still separates, only the names lie.
+
+==============================================================================
+LUALINE                                                       *lain-lualine*
+==============================================================================
+
+A lualine theme ships at lua/lualine/themes/lain.lua. It loads as the
+auto theme once the colorscheme is active, since vim.g.colors_name is
+"lain", or explicitly with require("lualine").setup({ theme = "lain" }).
+The bar is rose chrome text on the surface ground, ochre and rose and
+cream mode fills carrying black text, dim ochre for inactive sections.
+Every fg/bg pair clears WCAG 4.5:1.
+
+==============================================================================
+PALETTE                                                       *lain-palette*
+==============================================================================
+
+Colors resolve through semantic tokens in lua/lain/palette.lua, never a
+raw hex. Every token binds to a step of the ramps in lua/lain/ramp.lua.
+    ui      ground and chrome: bg, bg_surface, bg_hover, bg_fill,
+            fg_on_fill, fg, fg_chrome, fg_dim, fg_muted, rule, decoration,
+            border, border_focus, accent, alert, alert_fg
+    syn     syntax: text, type, string, punct, comment, keyword, preproc,
+            fun, special
+    diag    diagnostics: error, warn, info, hint, ok, warn_fill, ok_fill
+    diff    diff: add, change, delete, text
+
+The ramps: back_1 through back_12, fore_1 through fore_12, high_1 through
+high_12, plus the accents accent, success_fg, success_bg, warning_bg,
+error_bg, error_fg and white_pure.
+
+==============================================================================
+TESTS                                                         *lain-tests*
+==============================================================================
+
+>sh
+    tests/run.sh
+<
+runs the suite: lint, palette conformance (no raw hex outside
+lua/lain/ramp.lua, every token bound to a ramp step), WCAG contrast over
+every rendered pair, a headless smoke load, and a snapshot of the
+lain-defined groups.
+
+vim:tw=78:ts=8:noet:ft=help:norl:

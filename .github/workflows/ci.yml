@@ -1,0 +1,86 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # The whole suite against the floor and nightly, installed from release
+  # tarballs because the distro packages lag and the point is to test the
+  # floor we claim. Nightly may fail: its churn is not ours.
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        nvim: ["v0.11.7", "nightly"]
+        include:
+          - nvim: "nightly"
+            continue-on-error: true
+    continue-on-error: ${{ matrix.continue-on-error }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install nvim and lint tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            shellcheck unzip
+          curl -fsSL -o /tmp/nvim.tar.gz \
+            "https://github.com/neovim/neovim/releases/download/${{ matrix.nvim }}/nvim-linux-x86_64.tar.gz"
+          sudo tar -xzf /tmp/nvim.tar.gz -C /usr/local --strip-components=1
+          nvim --version | head -1
+          curl -fsSL -o /tmp/stylua.zip \
+            "https://github.com/johnnymorganz/stylua/releases/download/v2.5.2/stylua-linux-x86_64.zip"
+          unzip -o /tmp/stylua.zip -d /tmp/stylua-bin
+          sudo install -m 0755 /tmp/stylua-bin/stylua /usr/local/bin/stylua
+          stylua --version
+          curl -fsSL -o /tmp/shfmt \
+            "https://github.com/mvdan/sh/releases/download/v3.13.1/shfmt_v3.13.1_linux_amd64"
+          sudo install -m 0755 /tmp/shfmt /usr/local/bin/shfmt
+
+      - name: Static checks
+        run: tests/lint.sh
+
+      - name: Palette conformance
+        run: nvim -l tests/palette.lua
+
+      - name: Contrast
+        run: nvim -l tests/contrast.lua
+
+      - name: Smoke
+        run: tests/smoke.sh
+
+      # Snapshots dump only lain's own highlight groups, so nvim's changing
+      # default groups never enter the golden file. That keeps the golden
+      # version-stable and lets it run on every nvim in the matrix - unlike the
+      # sibling suite, which pins snapshots to one version because tmux changes
+      # how it draws between releases.
+      - name: Snapshot
+        run: tests/snapshot.sh
+
+  # The floor is a promise, so it gets a test: below 0.11 the theme must refuse
+  # to load rather than half-apply and leave default groups showing through.
+  version-floor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install nvim v0.10.x
+        run: |
+          curl -fsSL -o /tmp/nvim.tar.gz \
+            "https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.tar.gz"
+          sudo tar -xzf /tmp/nvim.tar.gz -C /usr/local --strip-components=1
+          nvim --version | head -1
+
+      - name: Theme refuses to load
+        run: |
+          out="$(nvim --clean --headless -i NONE --cmd "set rtp+=$PWD" \
+            -c "colorscheme lain" -c "qa!" 2>&1 || true)"
+          if ! printf '%s\n' "$out" | grep -q "requires Neovim 0.11"; then
+            echo "theme loaded on nvim 0.10; it should have refused"
+            echo "$out"
+            exit 1
+          fi
+          echo "refused, as expected"

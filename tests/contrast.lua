@@ -30,6 +30,7 @@ local overrides = {
   Conceal = { floor = 2.0, reason = "decoration tier: not information-bearing" },
   ["@conceal"] = { floor = 2.0, reason = "decoration tier: not information-bearing" },
   EndOfBuffer = { floor = 2.0, reason = "decoration tier: not information-bearing" },
+  FlashBackdrop = { floor = 2.0, reason = "decoration tier: not information-bearing" },
   Ignore = { floor = 2.0, reason = "decoration tier: not information-bearing" },
   NonText = { floor = 2.0, reason = "decoration tier: not information-bearing" },
   SpecialKey = { floor = 2.0, reason = "decoration tier: not information-bearing" },
@@ -211,6 +212,39 @@ local tint_pairs = {
 }
 for _, pair in ipairs(tint_pairs) do
   check(pair[1], pair[2], palette.ui.bg_hover, 3.0, "tint-mode Visual exemption")
+end
+
+print("")
+print("-- lualine theme pairs, 4.5:1 floor")
+local ltheme = nil
+local lok, lres = pcall(require, "lualine.themes.lain")
+if lok and type(lres) == "table" then
+  ltheme = lres
+end
+if not ltheme then
+  print("note: lualine theme absent; lualine pair measurement deferred to integration")
+else
+  for _, mode in ipairs({ "normal", "insert", "visual", "replace", "command", "inactive" }) do
+    local m = ltheme[mode]
+    if type(m) ~= "table" then
+      print(("FAIL  lualine section %s is missing"):format(mode))
+      fail = fail + 1
+    else
+      for _, seg in ipairs({ "a", "b", "c" }) do
+        local s = m[seg]
+        local label = "lualine." .. mode .. "." .. seg
+        if type(s) ~= "table" then
+          print(("FAIL  %s is missing"):format(label))
+          fail = fail + 1
+        elseif is_colour(s.fg) and is_colour(s.bg) then
+          check(label, s.fg, s.bg, 4.5, nil)
+        else
+          print(("FAIL  %s lacks an fg/bg pair"):format(label))
+          fail = fail + 1
+        end
+      end
+    end
+  end
 end
 
 io.stdout:flush()

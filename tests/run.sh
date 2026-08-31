@@ -5,8 +5,12 @@ set -eu
 
 cd "$(dirname "$0")"
 
+./lint.sh
+echo
 nvim -l palette.lua
 echo
 nvim -l contrast.lua
 echo
 ./smoke.sh
+echo
+./snapshot.sh

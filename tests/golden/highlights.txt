@@ -1,0 +1,613 @@
+@attribute fg=C1B48E
+@attribute.builtin fg=C1B48E
+@boolean fg=B5A985
+@character fg=A49978
+@character.special fg=FFB1C3
+@comment fg=8A8A8A italic
+@comment.documentation fg=8A8A8A italic
+@comment.error fg=FFB1C3
+@comment.note fg=8A8A8A italic
+@comment.todo fg=8A8A8A italic
+@comment.warning fg=8A8A8A italic
+@conceal fg=4A4A4A
+@constant fg=B5A985
+@constant.builtin fg=B5A985
+@constant.macro fg=B5A985
+@constructor fg=FFDCB9
+@diff.delta fg=CE7688
+@diff.minus fg=BA6A7B
+@diff.plus fg=A49978
+@function fg=FFDCB9
+@function.builtin fg=FFDCB9
+@function.call fg=FFDCB9
+@function.macro fg=BA6A7B
+@function.method fg=FFDCB9
+@function.method.call fg=FFDCB9
+@keyword fg=CE7688
+@keyword.conditional fg=CE7688
+@keyword.conditional.ternary fg=CE7688
+@keyword.coroutine fg=CE7688
+@keyword.debug fg=CE7688
+@keyword.directive fg=BA6A7B
+@keyword.directive.define fg=BA6A7B
+@keyword.exception fg=CE7688
+@keyword.function fg=CE7688
+@keyword.import fg=BA6A7B
+@keyword.modifier fg=CE7688
+@keyword.operator fg=CE7688
+@keyword.repeat fg=CE7688
+@keyword.return fg=CE7688
+@keyword.type fg=CE7688
+@label -> Label
+@lsp.mod.deprecated strikethrough
+@lsp.mod.readonly fg=C1B48E
+@lsp.type.boolean fg=B5A985
+@lsp.type.class fg=B5A985
+@lsp.type.comment clear
+@lsp.type.constant fg=B5A985
+@lsp.type.decorator fg=C1B48E
+@lsp.type.enum fg=B5A985
+@lsp.type.enumMember fg=B5A985
+@lsp.type.event fg=B5A985
+@lsp.type.function fg=FFDCB9
+@lsp.type.interface fg=B5A985
+@lsp.type.keyword clear
+@lsp.type.label -> Label
+@lsp.type.macro fg=BA6A7B
+@lsp.type.method fg=FFDCB9
+@lsp.type.modifier fg=CE7688
+@lsp.type.namespace fg=BA6A7B
+@lsp.type.number fg=B5A985
+@lsp.type.operator clear
+@lsp.type.parameter fg=A49978
+@lsp.type.property fg=C1B48E
+@lsp.type.regexp fg=FFB1C3
+@lsp.type.string fg=A49978
+@lsp.type.struct fg=B5A985
+@lsp.type.type fg=B5A985
+@lsp.type.typeParameter fg=B5A985
+@lsp.type.variable fg=C1B48E
+@lsp.typemod.function.builtin -> @function.builtin
+@lsp.typemod.function.defaultLibrary -> @function.builtin
+@lsp.typemod.method.defaultLibrary -> @function.builtin
+@lsp.typemod.variable.defaultLibrary fg=C1B48E
+@lsp.typemod.variable.global fg=C1B48E
+@markup.heading fg=CE7688 bold
+@markup.heading.1 -> @markup.heading
+@markup.heading.2 -> @markup.heading
+@markup.heading.3 -> @markup.heading
+@markup.heading.4 -> @markup.heading
+@markup.heading.5 -> @markup.heading
+@markup.heading.6 -> @markup.heading
+@markup.italic fg=C1B48E italic
+@markup.link fg=FFB1C3
+@markup.link.label fg=FFB1C3
+@markup.link.url fg=A49978 underline
+@markup.list fg=968C6E
+@markup.list.checked fg=C1B48E
+@markup.list.unchecked fg=C1B48E
+@markup.math fg=A49978
+@markup.quote fg=968C6E
+@markup.raw fg=CE7688
+@markup.raw.block fg=C1B48E
+@markup.strikethrough strikethrough
+@markup.strong fg=FFB1C3
+@markup.underline underline
+@module fg=BA6A7B
+@module.builtin fg=BA6A7B
+@none clear
+@number fg=B5A985
+@number.float fg=B5A985
+@operator fg=968C6E
+@property fg=C1B48E
+@punctuation.bracket fg=968C6E
+@punctuation.delimiter fg=968C6E
+@punctuation.special fg=968C6E
+@string fg=A49978
+@string.documentation fg=A49978
+@string.escape fg=FFB1C3
+@string.regexp fg=FFB1C3
+@string.special fg=FFB1C3
+@string.special.path fg=FFB1C3
+@string.special.symbol fg=FFB1C3
+@string.special.url fg=FFB1C3
+@tag fg=C1B48E
+@tag.attribute fg=C1B48E
+@tag.builtin fg=C1B48E
+@tag.delimiter fg=968C6E
+@type fg=B5A985
+@type.builtin fg=B5A985
+@type.definition fg=B5A985
+@type.qualifier fg=B5A985
+@variable fg=C1B48E
+@variable.builtin fg=C1B48E
+@variable.member fg=C1B48E
+@variable.parameter fg=A49978
+@variable.parameter.builtin fg=A49978
+Added fg=A49978
+BlinkCmpDoc fg=C1B48E bg=1A1A1A
+BlinkCmpDocBorder -> FloatBorder
+BlinkCmpGhostText fg=8A8A8A
+BlinkCmpKind fg=CE7688
+BlinkCmpKindClass fg=B5A985
+BlinkCmpKindConstant fg=B5A985
+BlinkCmpKindConstructor fg=FFDCB9
+BlinkCmpKindEnum fg=B5A985
+BlinkCmpKindEnumMember fg=B5A985
+BlinkCmpKindField fg=C1B48E
+BlinkCmpKindFunction fg=FFDCB9
+BlinkCmpKindInterface fg=B5A985
+BlinkCmpKindKeyword fg=CE7688
+BlinkCmpKindMethod fg=FFDCB9
+BlinkCmpKindModule fg=BA6A7B
+BlinkCmpKindProperty fg=C1B48E
+BlinkCmpKindReference fg=BA6A7B
+BlinkCmpKindSnippet fg=FFB1C3
+BlinkCmpKindStruct fg=B5A985
+BlinkCmpKindTypeParameter fg=B5A985
+BlinkCmpKindValue fg=C1B48E
+BlinkCmpKindVariable fg=C1B48E
+BlinkCmpLabel fg=C1B48E
+BlinkCmpLabelDeprecated fg=8A8A8A strikethrough
+BlinkCmpLabelDescription fg=968C6E
+BlinkCmpLabelDetail fg=968C6E
+BlinkCmpLabelMatch fg=FFB1C3 bold
+BlinkCmpMenu fg=C1B48E bg=1A1A1A
+BlinkCmpMenuBorder -> FloatBorder
+BlinkCmpMenuSelection fg=000000 bg=C1B48E
+BlinkCmpSource fg=968C6E
+Boolean fg=B5A985
+BufferLineBackground fg=968C6E bg=1A1A1A
+BufferLineBuffer fg=968C6E bg=1A1A1A
+BufferLineBufferSelected fg=000000 bg=C1B48E
+BufferLineBufferVisible fg=C1B48E bg=1A1A1A
+BufferLineCloseButton fg=8A8A8A bg=1A1A1A
+BufferLineCloseButtonSelected fg=000000 bg=C1B48E
+BufferLineCloseButtonVisible fg=8A8A8A bg=1A1A1A
+BufferLineDiagnostic fg=CE7688 bg=1A1A1A
+BufferLineDiagnosticSelected fg=000000 bg=C1B48E
+BufferLineDiagnosticVisible fg=CE7688 bg=1A1A1A
+BufferLineError fg=FFB1C3 bg=1A1A1A
+BufferLineErrorDiagnostic fg=FFB1C3 bg=1A1A1A
+BufferLineErrorDiagnosticSelected fg=000000 bg=C1B48E
+BufferLineErrorDiagnosticVisible fg=FFB1C3 bg=1A1A1A
+BufferLineErrorSelected fg=000000 bg=C1B48E
+BufferLineErrorVisible fg=FFB1C3 bg=1A1A1A
+BufferLineFill bg=1A1A1A
+BufferLineGroupLabel fg=000000 bg=C1B48E
+BufferLineGroupSeparator -> WinSeparator
+BufferLineHint fg=8A8A8A bg=1A1A1A
+BufferLineHintDiagnostic fg=8A8A8A bg=1A1A1A
+BufferLineHintDiagnosticSelected fg=000000 bg=C1B48E
+BufferLineHintDiagnosticVisible fg=8A8A8A bg=1A1A1A
+BufferLineHintSelected fg=000000 bg=C1B48E
+BufferLineHintVisible fg=8A8A8A bg=1A1A1A
+BufferLineIndicatorSelected fg=000000 bg=C1B48E
+BufferLineIndicatorVisible fg=8A8A8A bg=1A1A1A
+BufferLineInfo fg=A49978 bg=1A1A1A
+BufferLineInfoDiagnostic fg=A49978 bg=1A1A1A
+BufferLineInfoDiagnosticSelected fg=000000 bg=C1B48E
+BufferLineInfoDiagnosticVisible fg=A49978 bg=1A1A1A
+BufferLineInfoSelected fg=000000 bg=C1B48E
+BufferLineInfoVisible fg=A49978 bg=1A1A1A
+BufferLineModified fg=CE7688 bg=1A1A1A
+BufferLineModifiedSelected fg=000000 bg=C1B48E
+BufferLineModifiedVisible fg=CE7688 bg=1A1A1A
+BufferLineOffsetSeparator -> WinSeparator
+BufferLineSeparator -> WinSeparator
+BufferLineSeparatorSelected -> WinSeparator
+BufferLineSeparatorVisible -> WinSeparator
+BufferLineTab fg=968C6E bg=1A1A1A
+BufferLineTabClose fg=8A8A8A bg=1A1A1A
+BufferLineTabSelected fg=000000 bg=C1B48E
+BufferLineTabSeparator -> WinSeparator
+BufferLineTabSeparatorSelected -> WinSeparator
+BufferLineWarning fg=CE7688 bg=1A1A1A
+BufferLineWarningDiagnostic fg=CE7688 bg=1A1A1A
+BufferLineWarningDiagnosticSelected fg=000000 bg=C1B48E
+BufferLineWarningDiagnosticVisible fg=CE7688 bg=1A1A1A
+BufferLineWarningSelected fg=000000 bg=C1B48E
+BufferLineWarningVisible fg=CE7688 bg=1A1A1A
+Changed fg=CE7688
+Character fg=A49978
+ColorColumn bg=2A2A2A
+Comment fg=8A8A8A italic
+Conceal fg=4A4A4A
+Conditional -> Statement
+Constant fg=B5A985
+CurSearch fg=000000 bg=FFB1C3
+Cursor fg=000000 bg=C1B48E
+CursorColumn bg=1A1A1A
+CursorIM -> Cursor
+CursorLine bg=1A1A1A
+CursorLineFold -> CursorLine
+CursorLineNr fg=CE7688 bold
+CursorLineSign -> CursorLine
+DapUIBreakpointsCurrentLine fg=000000 bg=C1B48E
+DapUIBreakpointsDisabledLine fg=8A8A8A
+DapUIBreakpointsInfo fg=A49978
+DapUIBreakpointsLine -> LineNr
+DapUIBreakpointsPath fg=8A8A8A
+DapUICurrentFrameName fg=FFB1C3 bold
+DapUILineNumber -> LineNr
+DapUIModifiedValue fg=CE7688
+DapUINormal fg=C1B48E bg=000000
+DapUIPlayPause fg=FFDCB9
+DapUIScope fg=CE7688
+DapUIStop fg=FFB1C3
+DapUIStoppedThread fg=CE7688
+DapUIThread fg=A49978
+DapUIType fg=B5A985
+DapUIValue fg=C1B48E
+DapUIVariable fg=C1B48E
+DashboardDesc fg=C1B48E
+DashboardFiles fg=CE7688
+DashboardFooter fg=8A8A8A
+DashboardHeader fg=CE7688
+DashboardIcon fg=FFB1C3
+DashboardKey fg=FFB1C3
+DashboardMruIcon fg=FFB1C3
+DashboardMruTitle fg=CE7688
+DashboardProjectIcon fg=FFB1C3
+DashboardProjectTitle fg=CE7688
+DashboardRecentProjectIcon fg=FFB1C3
+DashboardShortCut fg=CE7688
+DashboardShortCutIcon fg=FFB1C3
+Debug fg=FFB1C3
+Define -> PreProc
+Delimiter fg=968C6E
+DiagnosticDeprecated fg=8A8A8A strikethrough
+DiagnosticError fg=FFB1C3
+DiagnosticFloatingError fg=FFDCB9 bg=930006
+DiagnosticFloatingHint fg=8A8A8A bg=1A1A1A
+DiagnosticFloatingInfo fg=A49978 bg=1A1A1A
+DiagnosticFloatingOk fg=FFDCB9 bg=60401D
+DiagnosticFloatingWarn fg=000000 bg=F9F06B
+DiagnosticHint fg=8A8A8A
+DiagnosticInfo fg=A49978
+DiagnosticOk fg=FFDCB9
+DiagnosticSignError fg=FFB1C3
+DiagnosticSignHint fg=8A8A8A
+DiagnosticSignInfo fg=A49978
+DiagnosticSignOk fg=FFDCB9
+DiagnosticSignWarn fg=CE7688
+DiagnosticUnderlineError sp=FFB1C3 undercurl
+DiagnosticUnderlineHint sp=8A8A8A undercurl
+DiagnosticUnderlineInfo sp=A49978 undercurl
+DiagnosticUnderlineOk sp=FFDCB9 undercurl
+DiagnosticUnderlineWarn sp=CE7688 undercurl
+DiagnosticUnnecessary fg=8A8A8A
+DiagnosticVirtualLinesError -> DiagnosticError
+DiagnosticVirtualLinesHint -> DiagnosticHint
+DiagnosticVirtualLinesInfo -> DiagnosticInfo
+DiagnosticVirtualLinesOk -> DiagnosticOk
+DiagnosticVirtualLinesWarn -> DiagnosticWarn
+DiagnosticVirtualTextError fg=FFDCB9 bg=930006
+DiagnosticVirtualTextHint fg=8A8A8A
+DiagnosticVirtualTextInfo fg=A49978
+DiagnosticVirtualTextOk fg=FFDCB9 bg=60401D
+DiagnosticVirtualTextWarn fg=000000 bg=F9F06B
+DiagnosticWarn fg=CE7688
+DiffAdd bg=332F24
+DiffChange bg=2A2A2A
+DiffDelete bg=381E24
+DiffText fg=FFDCB9 bg=4E4838
+Directory fg=CE7688
+EndOfBuffer fg=4A4A4A
+Error fg=FFDCB9 bg=930006
+ErrorMsg fg=FFDCB9 bg=930006
+Exception -> Statement
+FlashBackdrop fg=4A4A4A
+FlashCurrent fg=000000 bg=FFB1C3
+FlashLabel fg=000000 bg=FFB1C3 bold
+FlashMatch fg=000000 bg=C1B48E
+FlashPromptIcon fg=FFB1C3
+Float fg=B5A985
+FloatBorder fg=965363
+FloatFooter fg=968C6E bg=1A1A1A
+FloatShadow bg=000000
+FloatShadowThrough bg=000000
+FloatTitle fg=CE7688 bg=1A1A1A bold
+FoldColumn fg=7A7158
+Folded fg=968C6E bg=1A1A1A
+Function fg=FFDCB9
+FzfLuaBorder -> FloatBorder
+FzfLuaBufNr fg=968C6E
+FzfLuaCursorLine -> CursorLine
+FzfLuaCursorLineNr -> CursorLineNr
+FzfLuaFzfHeader fg=8A8A8A
+FzfLuaFzfInfo fg=968C6E
+FzfLuaFzfMarker fg=CE7688
+FzfLuaFzfMatch fg=FFB1C3
+FzfLuaFzfPointer fg=CE7688
+FzfLuaFzfPrompt fg=FFB1C3
+FzfLuaHeaderBind fg=968C6E
+FzfLuaHeaderText fg=CE7688
+FzfLuaLivePrompt fg=FFB1C3
+FzfLuaNormal fg=C1B48E bg=1A1A1A
+FzfLuaPathColNr fg=968C6E
+FzfLuaPreviewBorder -> FloatBorder
+FzfLuaPreviewNormal fg=C1B48E bg=1A1A1A
+FzfLuaPreviewTitle fg=CE7688 bg=1A1A1A bold
+FzfLuaPrompt fg=FFB1C3
+FzfLuaSearch fg=000000 bg=FFB1C3
+FzfLuaTitle fg=CE7688 bg=1A1A1A bold
+GitSignsAdd fg=A49978
+GitSignsAddPreview bg=332F24
+GitSignsChange fg=CE7688
+GitSignsChangedelete -> GitSignsChange
+GitSignsCurrentLineBlame fg=8A8A8A
+GitSignsCurrentLn bg=1A1A1A
+GitSignsDelete fg=BA6A7B
+GitSignsDeletePreview bg=381E24
+GitSignsTopdelete -> GitSignsDelete
+GitSignsUntracked fg=8A8A8A
+GitSignsVirtLnum -> LineNr
+GrugFarCurrentMatch fg=000000 bg=FFB1C3
+GrugFarHelpHeader fg=CE7688
+GrugFarHelpHeaderKey fg=FFB1C3
+GrugFarInputLabel fg=CE7688
+GrugFarInputPlaceholder fg=8A8A8A
+GrugFarResultsAddIndicator fg=A49978
+GrugFarResultsChangeIndicator fg=CE7688
+GrugFarResultsCmdHeader fg=968C6E
+GrugFarResultsCursorLineNo -> CursorLineNr
+GrugFarResultsHeader fg=CE7688
+GrugFarResultsLineNr -> LineNr
+GrugFarResultsMatch fg=000000 bg=C1B48E
+GrugFarResultsMatchAdded fg=A49978
+GrugFarResultsMatchRemoved fg=BA6A7B
+HealthError fg=FFDCB9 bg=930006
+HealthSuccess fg=FFDCB9 bg=60401D
+HealthWarning fg=000000 bg=F9F06B
+Identifier fg=C1B48E
+Ignore fg=4A4A4A
+IncSearch fg=000000 bg=FFB1C3
+Include -> PreProc
+Keyword -> Statement
+Label -> Statement
+LazyBold bold
+LazyButton fg=CE7688
+LazyButtonActive fg=000000 bg=C1B48E
+LazyComment fg=8A8A8A
+LazyCommit fg=8A8A8A
+LazyCommitType fg=CE7688
+LazyDimmed fg=8A8A8A
+LazyDir fg=968C6E
+LazyDone fg=FFDCB9
+LazyError fg=FFB1C3
+LazyH1 fg=CE7688 bold
+LazyH2 fg=CE7688
+LazyInfo fg=A49978
+LazyItalic italic
+LazyNoCond fg=8A8A8A
+LazyNormal fg=C1B48E bg=1A1A1A
+LazyProgressDone fg=FFDCB9
+LazyProgressTodo fg=8A8A8A
+LazySpecial fg=FFB1C3
+LazyWarning fg=CE7688
+LineNr fg=7A7158
+LineNrAbove -> LineNr
+LineNrBelow -> LineNr
+LspCodeLens fg=968C6E
+LspCodeLensSeparator -> LineNr
+LspInfoBorder -> FloatBorder
+LspInlayHint fg=8A8A8A bg=1A1A1A
+LspReferenceRead bg=2A2A2A
+LspReferenceTarget bg=2A2A2A
+LspReferenceText bg=2A2A2A
+LspReferenceWrite bg=2A2A2A
+LspSignatureActiveParameter bg=2A2A2A
+Macro -> PreProc
+MasonBackdrop bg=000000
+MasonError fg=FFB1C3
+MasonHeader fg=000000 bg=C1B48E bold
+MasonHeaderSecondary fg=000000 bg=FFB1C3 bold
+MasonHeading fg=CE7688 bold
+MasonHighlight fg=FFB1C3
+MasonHighlightBlock fg=000000 bg=C1B48E
+MasonHighlightBlockBold fg=000000 bg=C1B48E bold
+MasonHighlightBlockBoldSecondary fg=000000 bg=FFB1C3 bold
+MasonHighlightBlockSecondary fg=000000 bg=FFB1C3
+MasonHighlightSecondary fg=C1B48E
+MasonLink -> MasonHighlight
+MasonMuted fg=8A8A8A
+MasonMutedBlock fg=C1B48E bg=2A2A2A
+MasonMutedBlockBold fg=C1B48E bg=2A2A2A bold
+MasonNormal fg=C1B48E bg=1A1A1A
+MasonWarning fg=CE7688
+MatchParen fg=FFB1C3 bold
+MiniIconsAzure fg=B5A985
+MiniIconsBlue fg=A49978
+MiniIconsCyan fg=A49978
+MiniIconsGreen fg=FFDCB9
+MiniIconsGrey fg=8A8A8A
+MiniIconsOrange fg=CE7688
+MiniIconsPurple fg=FFB1C3
+MiniIconsRed fg=FFB1C3
+MiniIconsYellow fg=F9F06B
+ModeMsg fg=CE7688 bold
+MoreMsg fg=CE7688
+MsgArea fg=968C6E
+MsgSeparator bg=2A2A2A
+NoiceCmdline fg=C1B48E bg=1A1A1A
+NoiceCmdlinePopup fg=C1B48E bg=1A1A1A
+NoiceCmdlinePopupBorder -> FloatBorder
+NoiceCmdlinePopupTitle fg=CE7688 bg=1A1A1A bold
+NoiceConfirm fg=C1B48E bg=1A1A1A
+NoiceConfirmBorder -> FloatBorder
+NoiceFormatConfirm fg=FFDCB9
+NoiceFormatEvent fg=CE7688
+NoiceFormatKind fg=968C6E
+NoiceFormatLevelError fg=FFB1C3
+NoiceFormatLevelInfo fg=A49978
+NoiceFormatLevelWarn fg=CE7688
+NoiceFormatProgressDone fg=FFDCB9
+NoiceFormatProgressTodo fg=8A8A8A
+NoiceFormatTitle fg=CE7688 bold
+NoiceLspProgressClient fg=8A8A8A
+NoiceLspProgressSpinner fg=FFB1C3
+NoiceLspProgressTitle fg=CE7688
+NoiceMini fg=C1B48E bg=1A1A1A
+NoicePopup fg=C1B48E bg=1A1A1A
+NoicePopupBorder -> FloatBorder
+NoicePopupmenu fg=C1B48E bg=1A1A1A
+NoicePopupmenuBorder -> FloatBorder
+NoicePopupmenuMatch fg=FFB1C3
+NoicePopupmenuSelected fg=000000 bg=C1B48E
+NoiceVirtualText fg=8A8A8A
+NonText fg=4A4A4A
+Normal fg=C1B48E bg=000000
+NormalFloat fg=C1B48E bg=1A1A1A
+NormalNC -> Normal
+Number fg=B5A985
+NvimDapVirtualText fg=8A8A8A
+NvimDapVirtualTextChanged fg=CE7688
+NvimDapVirtualTextError fg=FFB1C3
+NvimDapVirtualTextInfo fg=A49978
+Operator fg=968C6E
+Pmenu fg=C1B48E bg=1A1A1A
+PmenuExtra fg=968C6E bg=1A1A1A
+PmenuExtraSel fg=000000 bg=C1B48E
+PmenuKind fg=CE7688 bg=1A1A1A
+PmenuKindSel fg=000000 bg=C1B48E
+PmenuMatch bold
+PmenuMatchSel bold
+PmenuSbar bg=2A2A2A
+PmenuSel fg=000000 bg=C1B48E
+PmenuThumb bg=C1B48E
+PreCondit -> PreProc
+PreProc fg=BA6A7B
+Question fg=FFB1C3
+QuickFixLine bg=2A2A2A
+Removed fg=BA6A7B
+Repeat -> Statement
+Search fg=000000 bg=C1B48E
+SignColumn fg=7A7158
+SnacksNormal fg=C1B48E bg=1A1A1A
+SnacksNormalNC -> SnacksNormal
+SnacksNotifierDebug fg=C1B48E bg=1A1A1A
+SnacksNotifierError fg=C1B48E bg=1A1A1A
+SnacksNotifierHistory fg=C1B48E bg=1A1A1A
+SnacksNotifierHistoryTitle fg=CE7688
+SnacksNotifierInfo fg=C1B48E bg=1A1A1A
+SnacksNotifierMinimal fg=C1B48E bg=1A1A1A
+SnacksNotifierTrace fg=C1B48E bg=1A1A1A
+SnacksNotifierWarn fg=C1B48E bg=1A1A1A
+SnacksPicker fg=C1B48E bg=1A1A1A
+SnacksPickerBorder -> FloatBorder
+SnacksPickerCursorLine -> CursorLine
+SnacksPickerDir fg=968C6E
+SnacksPickerFooter -> FloatFooter
+SnacksPickerIcon fg=FFB1C3
+SnacksPickerInput fg=C1B48E bg=1A1A1A
+SnacksPickerMatch fg=FFB1C3
+SnacksPickerPreview fg=C1B48E bg=1A1A1A
+SnacksPickerPrompt fg=FFB1C3
+SnacksPickerSelected fg=FFB1C3
+SnacksPickerTitle -> FloatTitle
+SnacksPickerTotals fg=968C6E
+Special fg=FFB1C3
+SpecialChar -> Special
+SpecialComment fg=8A8A8A italic
+SpecialKey fg=4A4A4A
+SpellBad sp=FFB1C3 undercurl
+SpellCap sp=CE7688 undercurl
+SpellLocal sp=8A8A8A undercurl
+SpellRare sp=A49978 undercurl
+Statement fg=CE7688
+StatusLine fg=CE7688 bg=1A1A1A
+StatusLineNC fg=968C6E bg=1A1A1A
+StatusLineTerm -> StatusLine
+StatusLineTermNC -> StatusLineNC
+StorageClass -> Type
+String fg=A49978
+Structure -> Type
+Substitute fg=000000 bg=C1B48E
+TabLine fg=968C6E bg=1A1A1A
+TabLineFill bg=1A1A1A
+TabLineSel fg=000000 bg=C1B48E
+Tag fg=C1B48E
+TermCursor -> Cursor
+TermCursorNC -> TermCursor
+Title fg=CE7688 bold
+Todo fg=000000 bg=FFB1C3
+TodoBgFIX fg=FFDCB9 bg=930006
+TodoBgHACK fg=000000 bg=F9F06B
+TodoBgNOTE fg=8A8A8A bg=1A1A1A
+TodoBgPERF fg=FFDCB9 bg=60401D
+TodoBgTEST fg=A49978 bg=1A1A1A
+TodoBgTODO fg=A49978 bg=1A1A1A
+TodoBgWARN fg=000000 bg=F9F06B
+TodoFgFIX fg=FFB1C3
+TodoFgHACK fg=CE7688
+TodoFgNOTE fg=8A8A8A
+TodoFgPERF fg=FFDCB9
+TodoFgTEST fg=A49978
+TodoFgTODO fg=A49978
+TodoFgWARN fg=CE7688
+TodoSignFIX fg=FFB1C3
+TodoSignHACK fg=CE7688
+TodoSignNOTE fg=8A8A8A
+TodoSignPERF fg=FFDCB9
+TodoSignTEST fg=A49978
+TodoSignTODO fg=A49978
+TodoSignWARN fg=CE7688
+TroubleCount fg=968C6E
+TroubleIcon fg=CE7688
+TroubleIndent -> WinSeparator
+TroubleNormal fg=C1B48E bg=000000
+TroubleNormalNC -> TroubleNormal
+TroublePos fg=968C6E
+TroublePreview fg=C1B48E bg=1A1A1A
+TroubleSource fg=968C6E
+TroubleStatusline fg=CE7688 bg=1A1A1A
+TroubleText fg=C1B48E
+Type fg=B5A985
+Typedef -> Type
+Underlined fg=C1B48E underline
+VertSplit -> WinSeparator
+Visual fg=000000 bg=C1B48E
+VisualNOS -> Visual
+WarningMsg fg=000000 bg=F9F06B
+WhichKeyBorder -> FloatBorder
+WhichKeyDesc fg=968C6E
+WhichKeyGroup fg=CE7688
+WhichKeyIcon fg=FFB1C3
+WhichKeyNormal fg=C1B48E bg=1A1A1A
+WhichKeySeparator fg=968C6E
+WhichKeyTitle fg=CE7688 bg=1A1A1A bold
+WhichKeyValue fg=8A8A8A
+Whitespace fg=4A4A4A
+WildMenu fg=000000 bg=C1B48E
+WinBar fg=CE7688
+WinBarNC fg=968C6E
+WinSeparator fg=7A7158
+debugBreakpoint fg=FFB1C3
+debugPC bg=2A2A2A
+diffAdded fg=A49978
+diffBDiffer fg=968C6E
+diffChanged fg=CE7688
+diffComment fg=8A8A8A italic
+diffCommon fg=968C6E
+diffDiffer fg=968C6E
+diffFile fg=CE7688
+diffIdentical fg=968C6E
+diffIndexLine -> LineNr
+diffIsA fg=968C6E
+diffLine -> LineNr
+diffNewFile fg=CE7688
+diffNoEOL fg=968C6E
+diffOldFile fg=CE7688
+diffOnly fg=968C6E
+diffRemoved fg=BA6A7B
+diffSubname -> LineNr
+gitcommitBranch fg=FFB1C3
+gitcommitDiscardedFile fg=BA6A7B
+gitcommitDiscardedType fg=BA6A7B
+gitcommitHeader fg=CE7688
+gitcommitOverflow fg=FFDCB9 bg=930006
+gitcommitSelectedFile fg=A49978
+gitcommitSelectedType fg=A49978
+gitcommitSummary fg=C1B48E
+lCursor -> Cursor

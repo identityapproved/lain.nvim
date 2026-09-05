@@ -15,12 +15,13 @@ jobs:
       fail-fast: false
       matrix:
         nvim: ["v0.11.7", "nightly"]
-        include:
-          - nvim: "nightly"
-            continue-on-error: true
-    continue-on-error: ${{ matrix.continue-on-error }}
+    # Must evaluate to a boolean on every leg. Reading it from an `include:`
+    # that only covers nightly left the floor leg with an empty string, which
+    # is a validation error: the whole job was never created, and CI stayed
+    # green on the strength of version-floor alone.
+    continue-on-error: ${{ matrix.nvim == 'nightly' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install nvim and lint tooling
         run: |
@@ -73,7 +74,7 @@ jobs:
   version-floor:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install nvim v0.10.x
         run: |

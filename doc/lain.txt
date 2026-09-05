@@ -151,14 +151,22 @@ reports on the two hard requirements and on what the theme resolved to:
 
     Neovim version    an error below 0.11, the floor lain.load() enforces
     Truecolor         an error if termguicolors is off, a warning if
-                      neither COLORTERM nor TERM advertises 24-bit color
+                      nothing advertises 24-bit color
     Colorscheme       whether lain is active and the background is dark
-    Configuration     the resolved styles.visual and terminal_colors, and
-                      whether all sixteen terminal_color_* slots are set
+    Configuration     the resolved options, and whether all sixteen
+                      terminal_color_* slots are set
 
-The truecolor result is a warning, not an error: plenty of 24-bit
-terminals advertise nothing. It is worth saying either way, since there
-is no 256-color fallback to degrade into.
+Truecolor is read from COLORTERM, from a TERM naming a direct-color
+entry, and - inside tmux - from what tmux negotiated with its client.
+That last one matters: tmux does not forward COLORTERM, so a session with
+working truecolor otherwise reports as having none. If tmux is not set up
+for it, the advice is the tmux.conf line rather than a COLORTERM export:
+>
+    set -as terminal-features ",*:RGB"
+<
+The result is a warning, not an error: plenty of 24-bit terminals
+advertise nothing. It is worth saying either way, since there is no
+256-color fallback to degrade into.
 
 ==============================================================================
 TESTS                                                         *lain-tests*

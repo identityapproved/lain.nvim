@@ -20,6 +20,34 @@ local function check_version()
   end
 end
 
+-- Inside tmux the outer terminal's COLORTERM does not reach Neovim, so the
+-- environment alone reads as "no truecolor" on a session that has it. Ask tmux
+-- what it negotiated with the client instead.
+local function tmux_rgb()
+  if not vim.env.TMUX or vim.fn.executable("tmux") == 0 then
+    return nil
+  end
+  local function tmux(args)
+    local res = vim.system(vim.list_extend({ "tmux" }, args), { text = true }):wait()
+    if res.code ~= 0 then
+      return nil
+    end
+    return res.stdout or ""
+  end
+  local features = tmux({ "display-message", "-p", "#{client_termfeatures}" })
+  if features and features:find("RGB", 1, true) then
+    return "tmux reports RGB among this client's terminal features"
+  end
+  -- client_termfeatures arrived in tmux 3.2; older servers only have the
+  -- configured capabilities to go on.
+  local configured = (tmux({ "show", "-Ag", "terminal-features" }) or "")
+    .. (tmux({ "show", "-Ag", "terminal-overrides" }) or "")
+  if configured:find("RGB", 1, true) or configured:find("Tc", 1, true) then
+    return "tmux is configured for RGB"
+  end
+  return nil
+end
+
 local function check_truecolor()
   health.start("Truecolor")
   if vim.o.termguicolors then
@@ -32,17 +60,24 @@ local function check_truecolor()
   end
 
   local colorterm = vim.env.COLORTERM
+  local via_tmux = tmux_rgb()
   if colorterm == "truecolor" or colorterm == "24bit" then
     health.ok("COLORTERM=" .. colorterm)
   elseif vim.env.TERM and vim.env.TERM:find("direct", 1, true) then
     health.ok("TERM=" .. vim.env.TERM .. " advertises direct color")
+  elseif via_tmux then
+    health.ok(via_tmux)
   else
-    -- Not fatal: plenty of 24-bit terminals set neither. The ramps do need it,
-    -- and there is no 256-colour fallback, so say so rather than stay quiet.
-    health.warn("no 24-bit signal from COLORTERM or TERM", {
-      "lain has no 256-colour fallback; the rose and ochre steps collapse without truecolor.",
-      "If your terminal does support it, export COLORTERM=truecolor.",
-    })
+    -- Not fatal: plenty of 24-bit terminals advertise nothing. The ramps do
+    -- need it, and there is no 256-colour fallback, so say so rather than stay
+    -- quiet.
+    local advice = { "lain has no 256-colour fallback; the rose and ochre steps collapse without truecolor." }
+    if vim.env.TMUX then
+      advice[#advice + 1] = "tmux does not forward COLORTERM. In tmux.conf: set -as terminal-features ',*:RGB'"
+    else
+      advice[#advice + 1] = "If your terminal does support it, export COLORTERM=truecolor."
+    end
+    health.warn("no 24-bit signal from COLORTERM, TERM or tmux", advice)
   end
 end
 

@@ -98,9 +98,13 @@ against rose for failure - the hue still separates, only the names lie.
 
 reports on the two hard requirements - Neovim 0.11 and truecolor - and on what
 the theme resolved to: whether lain is active, the resolved options, and
-whether all sixteen `terminal_color_*` slots are set. The truecolor result is a
-warning rather than an error, since plenty of 24-bit terminals advertise
-nothing.
+whether all sixteen `terminal_color_*` slots are set.
+
+Truecolor is read from `COLORTERM`, from a `TERM` naming a direct-color entry,
+and inside tmux from what tmux negotiated with its client - tmux does not
+forward `COLORTERM`, so without that last check a working tmux session reports
+as having no truecolor. The result is a warning rather than an error, since
+plenty of 24-bit terminals advertise nothing.
 
 ## Tests
 

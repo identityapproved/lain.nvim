@@ -11,6 +11,8 @@ nvim -l palette.lua
 echo
 nvim -l contrast.lua
 echo
+nvim -l variants.lua
+echo
 ./smoke.sh
 echo
 ./hooks.sh

@@ -55,6 +55,9 @@ jobs:
       - name: Contrast
         run: nvim -l tests/contrast.lua
 
+      - name: Variants
+        run: nvim -l tests/variants.lua
+
       - name: Smoke
         run: tests/smoke.sh
 

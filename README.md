@@ -142,9 +142,16 @@ tests/run.sh
 ```
 
 runs palette conformance (no raw hex outside `lua/lain/ramp.lua`, every token
-bound to a ramp step), WCAG contrast over every rendered pair, a headless smoke
+bound to a ramp step), WCAG contrast over every rendered pair, the option
+variants (what each option may change and what it must not), a headless smoke
 load, the `on_highlights` contract including what a broken hook costs, and a
 headless `:checkhealth` that must come back clean.
+
+The variant check is what keeps `transparent` honest: the list of ground-painting
+groups in `lua/lain/groups/init.lua` is written by hand, so the test asserts that
+every group painting the window ground is either on it or an explicit shadow
+exemption. A plugin group added later that paints the ground and is not listed
+fails the suite by name rather than quietly staying opaque.
 
 `tests/lint.sh` skips a tool it cannot find, which suits a dev box but would let
 CI pass having checked nothing. CI runs `LINT_STRICT=1 tests/lint.sh`, where a

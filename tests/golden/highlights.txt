@@ -372,6 +372,7 @@ GrugFarResultsLineNr -> LineNr
 GrugFarResultsMatch fg=000000 bg=C1B48E
 GrugFarResultsMatchAdded fg=A49978
 GrugFarResultsMatchRemoved fg=BA6A7B
+GrugFarResultsRemoveIndicator fg=BA6A7B
 HealthError fg=FFDCB9 bg=930006
 HealthSuccess fg=FFDCB9 bg=60401D
 HealthWarning fg=000000 bg=F9F06B

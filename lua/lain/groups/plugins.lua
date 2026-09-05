@@ -185,6 +185,7 @@ M.GrugFarResultsLineNr = { link = "LineNr" }
 M.GrugFarResultsMatch = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill }
 M.GrugFarResultsMatchAdded = { fg = p.syn.string }
 M.GrugFarResultsMatchRemoved = { fg = p.syn.preproc }
+M.GrugFarResultsRemoveIndicator = { fg = p.syn.preproc }
 
 M.LazyBold = { bold = true }
 M.LazyButton = { fg = p.ui.fg_chrome }

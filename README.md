@@ -142,11 +142,18 @@ tests/run.sh
 ```
 
 runs palette conformance (no raw hex outside `lua/lain/ramp.lua`, every token
-bound to a ramp step), WCAG contrast over every rendered pair, the option
+bound to a ramp step), WCAG contrast over every rendered pair against the
+ground it actually lands on, the option
 variants (what each option may change and what it must not), a headless smoke
 load that also asserts no group renders a colour outside the ramp, the
 `on_highlights` contract including what a broken hook costs, and a headless
 `:checkhealth` that must come back clean.
+
+A plugin that draws in a window of its own puts its text on that window's
+ground, not on `Normal`. `tests/pairs.lua` maps those families by prefix, so a
+group added to one is measured against the right surface without anyone
+remembering to update the map, and lists the few groups that carry a plugin's
+prefix but are drawn over the buffer.
 
 That last smoke assertion is a coverage check, not a palette one: a group lain
 never names keeps nvim's default colour, which is how `OkMsg` put a mint green

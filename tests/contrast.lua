@@ -12,7 +12,25 @@ vim.cmd("cd " .. vim.fn.fnameescape(root))
 package.path = root .. "/?.lua;" .. root .. "/lua/?.lua;" .. root .. "/lua/?/init.lua;" .. package.path
 
 local wcag = require("tests.lib.wcag")
-local pairs_map = require("tests.pairs").surfaces
+local context = require("tests.pairs")
+local pairs_map = context.surfaces
+
+-- A group's surface: its own entry first, then its family's window, unless it
+-- is one of the groups that carries a plugin prefix but draws over the buffer.
+local function surface_of(name)
+  if pairs_map[name] then
+    return pairs_map[name]
+  end
+  if context.on_normal[name] then
+    return nil
+  end
+  for _, fam in ipairs(context.families) do
+    if name:sub(1, #fam.prefix) == fam.prefix and name ~= fam.surface then
+      return fam.surface
+    end
+  end
+  return nil
+end
 
 local lain = require("lain")
 lain.setup()
@@ -80,7 +98,7 @@ local function effective_bg(name)
         end
       end
     end
-    local surface = pairs_map[n]
+    local surface = surface_of(n)
     if surface then
       local via = resolve(surface)
       if via then

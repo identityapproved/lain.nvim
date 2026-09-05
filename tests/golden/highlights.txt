@@ -322,6 +322,8 @@ FoldColumn fg=7A7158
 Folded fg=968C6E bg=1A1A1A
 Function fg=FFDCB9
 FzfLuaBorder -> FloatBorder
+FzfLuaBufFlagAlt fg=968C6E
+FzfLuaBufFlagCur fg=CE7688
 FzfLuaBufNr fg=968C6E
 FzfLuaCursorLine -> CursorLine
 FzfLuaCursorLineNr -> CursorLineNr
@@ -334,13 +336,16 @@ FzfLuaFzfPrompt fg=FFB1C3
 FzfLuaHeaderBind fg=968C6E
 FzfLuaHeaderText fg=CE7688
 FzfLuaLivePrompt fg=FFB1C3
+FzfLuaLiveSym fg=FFB1C3
 FzfLuaNormal fg=C1B48E bg=1A1A1A
 FzfLuaPathColNr fg=968C6E
+FzfLuaPathLineNr fg=968C6E
 FzfLuaPreviewBorder -> FloatBorder
 FzfLuaPreviewNormal fg=C1B48E bg=1A1A1A
 FzfLuaPreviewTitle fg=CE7688 bg=1A1A1A bold
-FzfLuaPrompt fg=FFB1C3
 FzfLuaSearch fg=000000 bg=FFB1C3
+FzfLuaTabMarker fg=FFB1C3 bold
+FzfLuaTabTitle fg=CE7688 bold
 FzfLuaTitle fg=CE7688 bg=1A1A1A bold
 GitSignsAdd fg=A49978
 GitSignsAddPreview bg=332F24

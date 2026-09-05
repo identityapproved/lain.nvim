@@ -145,6 +145,8 @@ M.FlashMatch = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill }
 M.FlashPromptIcon = { fg = p.ui.accent }
 
 M.FzfLuaBorder = { link = "FloatBorder" }
+M.FzfLuaBufFlagAlt = { fg = p.ui.fg_dim }
+M.FzfLuaBufFlagCur = { fg = p.ui.fg_chrome }
 M.FzfLuaBufNr = { fg = p.ui.fg_dim }
 M.FzfLuaCursorLine = { link = "CursorLine" }
 M.FzfLuaCursorLineNr = { link = "CursorLineNr" }
@@ -157,13 +159,16 @@ M.FzfLuaFzfPrompt = { fg = p.ui.accent }
 M.FzfLuaHeaderBind = { fg = p.ui.fg_dim }
 M.FzfLuaHeaderText = { fg = p.ui.fg_chrome }
 M.FzfLuaLivePrompt = { fg = p.ui.accent }
+M.FzfLuaLiveSym = { fg = p.ui.accent }
 M.FzfLuaNormal = { fg = p.ui.fg, bg = p.ui.bg_surface }
 M.FzfLuaPathColNr = { fg = p.ui.fg_dim }
+M.FzfLuaPathLineNr = { fg = p.ui.fg_dim }
 M.FzfLuaPreviewBorder = { link = "FloatBorder" }
 M.FzfLuaPreviewNormal = { fg = p.ui.fg, bg = p.ui.bg_surface }
 M.FzfLuaPreviewTitle = { fg = p.ui.fg_chrome, bg = p.ui.bg_surface, bold = true }
-M.FzfLuaPrompt = { fg = p.ui.accent }
 M.FzfLuaSearch = { fg = p.ui.fg_on_fill, bg = p.ui.accent }
+M.FzfLuaTabMarker = { fg = p.ui.accent, bold = true }
+M.FzfLuaTabTitle = { fg = p.ui.fg_chrome, bold = true }
 M.FzfLuaTitle = { fg = p.ui.fg_chrome, bg = p.ui.bg_surface, bold = true }
 
 M.GrugFarCurrentMatch = { fg = p.ui.fg_on_fill, bg = p.ui.accent }

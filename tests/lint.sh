@@ -43,18 +43,40 @@ else
   unavailable stylua "not installed"
 fi
 
-if ! command -v luacheck >/dev/null 2>&1; then
-  unavailable luacheck "not installed"
-elif ! luacheck --version >/dev/null 2>&1; then
-  # A luacheck whose shebang picks an interpreter that cannot see its modules
-  # is on PATH and still useless. Say which, rather than failing as if the
-  # sources were at fault.
-  unavailable luacheck "on PATH but not runnable: interpreter cannot load its modules"
+# A luacheck whose shebang picks an interpreter that cannot see its modules is on
+# PATH and still useless. Distributions build it for one Lua slot and leave the
+# #!/usr/bin/env lua shebang pointing at whatever `lua` happens to be, so the
+# script is fine and only the interpreter in front of it is wrong. Name the slots
+# rather than give up: an unrunnable luacheck used to read as a clean run.
+luacheck_cmd=""
+luacheck_why="not installed"
+if command -v luacheck >/dev/null 2>&1; then
+  luacheck_why="on PATH but no Lua on this box can load its modules"
+  if luacheck --version >/dev/null 2>&1; then
+    luacheck_cmd="luacheck"
+  else
+    luacheck_path="$(command -v luacheck)"
+    for interp in lua5.1 lua5.2 lua5.3 lua5.4 luajit lua; do
+      if command -v "$interp" >/dev/null 2>&1 &&
+        "$interp" "$luacheck_path" --version >/dev/null 2>&1; then
+        luacheck_cmd="$interp $luacheck_path"
+        break
+      fi
+    done
+  fi
+fi
+
+if [ -z "$luacheck_cmd" ]; then
+  unavailable luacheck "$luacheck_why"
 else
   # Flags live in .luacheckrc, picked up from the repo root.
   # shellcheck disable=SC2086
-  if luacheck $files; then
-    echo "ok    luacheck"
+  if $luacheck_cmd $files; then
+    if [ "$luacheck_cmd" = "luacheck" ]; then
+      echo "ok    luacheck"
+    else
+      printf 'ok    luacheck (via %s)\n' "${luacheck_cmd%% *}"
+    fi
   else
     fail=1
   fi

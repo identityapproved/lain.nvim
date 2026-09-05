@@ -157,6 +157,11 @@ fails the suite by name rather than quietly staying opaque.
 CI pass having checked nothing. CI runs `LINT_STRICT=1 tests/lint.sh`, where a
 missing or unrunnable tool fails instead.
 
+luacheck ships a `#!/usr/bin/env lua` shebang but is built against one Lua slot,
+so on a box whose `lua` is a different version it sits on `PATH` and cannot load
+its own modules. The lint step tries the versioned interpreters against it before
+giving up, and says which one it used.
+
 ## Notes
 
 Unofficial fan project. Not affiliated with, endorsed by, or connected to the

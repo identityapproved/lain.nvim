@@ -89,6 +89,18 @@ kitty theme, so `:terminal` inside nvim and a kitty tab agree. Green renders as
 ochre, blue as grey; programs that hardcode "green means success" read as ochre
 against rose for failure - the hue still separates, only the names lie.
 
+## Health
+
+```vim
+:checkhealth lain
+```
+
+reports on the two hard requirements - Neovim 0.11 and truecolor - and on what
+the theme resolved to: whether lain is active, the resolved options, and
+whether all sixteen `terminal_color_*` slots are set. The truecolor result is a
+warning rather than an error, since plenty of 24-bit terminals advertise
+nothing.
+
 ## Tests
 
 ```sh
@@ -96,8 +108,8 @@ tests/run.sh
 ```
 
 runs palette conformance (no raw hex outside `lua/lain/ramp.lua`, every token
-bound to a ramp step), WCAG contrast over every rendered pair, and a headless
-smoke load.
+bound to a ramp step), WCAG contrast over every rendered pair, a headless smoke
+load, and a headless `:checkhealth` that must come back clean.
 
 ## Notes
 

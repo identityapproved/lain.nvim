@@ -52,6 +52,9 @@ jobs:
       - name: Smoke
         run: tests/smoke.sh
 
+      - name: Health
+        run: tests/health.sh
+
       # Snapshots dump only lain's own highlight groups, so nvim's changing
       # default groups never enter the golden file. That keeps the golden
       # version-stable and lets it run on every nvim in the matrix - unlike the

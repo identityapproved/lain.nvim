@@ -13,4 +13,6 @@ nvim -l contrast.lua
 echo
 ./smoke.sh
 echo
+./health.sh
+echo
 ./snapshot.sh

@@ -222,8 +222,9 @@ TESTS                                                         *lain-tests*
 <
 runs the suite: lint, palette conformance (no raw hex outside
 lua/lain/ramp.lua, every token bound to a ramp step), WCAG contrast over
-every rendered pair, a headless smoke load, a headless :checkhealth that
-must come back clean, and a snapshot of the lain-defined groups.
+every rendered pair, a headless smoke load, the on_highlights contract
+including what a broken hook costs, a headless :checkhealth that must
+come back clean, and a snapshot of the lain-defined groups.
 
 The lint step skips a tool it cannot find, which suits a dev box but
 would let CI pass having checked nothing. CI therefore runs it as

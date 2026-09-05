@@ -195,26 +195,30 @@ for name in pairs(groups) do
     syn_names[name] = true
   end
 end
-local cursor_bg = palette.ui.bg_surface
+-- One list, two grounds. A syntax group added later has to clear both, and
+-- deriving the names once is what makes that automatic rather than remembered.
+local syn_fg = {}
 for _, name in ipairs(sorted_keys(syn_names)) do
   local g = groups[name] or (syn_map and syn_map[name]) or (ts_map and ts_map[name])
   if g and is_colour(g.fg) and not is_colour(g.bg) and not overrides[name] then
-    check(name, g.fg, cursor_bg, 4.5, nil)
+    syn_fg[#syn_fg + 1] = { name, g.fg }
   end
 end
 
+for _, pair in ipairs(syn_fg) do
+  check(pair[1], pair[2], palette.ui.bg_surface, 4.5, nil)
+end
+
 print("")
-print("-- tint-mode Visual exemption, 3.0:1 floor")
-local tint_pairs = {
-  { "syn.comment", palette.syn.comment },
-  { "syn.punct", palette.syn.punct },
-  { "syn.keyword", palette.syn.keyword },
-  { "syn.string", palette.syn.string },
-  { "ui.fg", palette.ui.fg },
-}
-for _, pair in ipairs(tint_pairs) do
+print("-- tint-mode Visual pairs, 3.0:1 floor")
+-- bg_hover is lighter than the cursor-line ground, so clearing 4.5:1 above says
+-- nothing about this one. Under styles.visual = "tint" the selection keeps the
+-- syntax colours and only swaps the ground, and 3.0:1 is the floor a transient
+-- selection is held to rather than the 4.5:1 body-text one.
+for _, pair in ipairs(syn_fg) do
   check(pair[1], pair[2], palette.ui.bg_hover, 3.0, "tint-mode Visual exemption")
 end
+print(("      %d syntax groups over both grounds"):format(#syn_fg))
 
 print("")
 print("-- lualine theme pairs, 4.5:1 floor")

@@ -478,6 +478,7 @@ NvimDapVirtualText fg=8A8A8A
 NvimDapVirtualTextChanged fg=CE7688
 NvimDapVirtualTextError fg=FFB1C3
 NvimDapVirtualTextInfo fg=A49978
+OkMsg fg=FFDCB9 bg=60401D
 Operator fg=968C6E
 OutlineCurrent fg=A49978 bg=1A1A1A
 OutlineDetails fg=8A8A8A

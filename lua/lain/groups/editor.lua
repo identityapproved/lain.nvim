@@ -39,6 +39,7 @@ M.NonText = { fg = p.ui.decoration }
 M.Normal = { fg = p.ui.fg, bg = p.ui.bg }
 M.NormalFloat = { fg = p.ui.fg, bg = p.ui.bg_surface }
 M.NormalNC = { link = "Normal" }
+M.OkMsg = { fg = p.diag.ok, bg = p.diag.ok_fill }
 M.Pmenu = { fg = p.ui.fg, bg = p.ui.bg_surface }
 M.PmenuExtra = { fg = p.ui.fg_dim, bg = p.ui.bg_surface }
 M.PmenuExtraSel = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill }

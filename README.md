@@ -144,8 +144,14 @@ tests/run.sh
 runs palette conformance (no raw hex outside `lua/lain/ramp.lua`, every token
 bound to a ramp step), WCAG contrast over every rendered pair, the option
 variants (what each option may change and what it must not), a headless smoke
-load, the `on_highlights` contract including what a broken hook costs, and a
-headless `:checkhealth` that must come back clean.
+load that also asserts no group renders a colour outside the ramp, the
+`on_highlights` contract including what a broken hook costs, and a headless
+`:checkhealth` that must come back clean.
+
+That last smoke assertion is a coverage check, not a palette one: a group lain
+never names keeps nvim's default colour, which is how `OkMsg` put a mint green
+into a theme with no green. Only the vimscript expression-parser groups and the
+`'redrawdebug'` overlay are exempt.
 
 The variant check is what keeps `transparent` honest: the list of ground-painting
 groups in `lua/lain/groups/init.lua` is written by hand, so the test asserts that

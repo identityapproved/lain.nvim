@@ -65,6 +65,39 @@ local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
 check(hex(visual.bg) == "C1B48E", "Visual bg C1B48E", "Visual bg is " .. hex(visual.bg))
 check(hex(visual.fg) == "000000", "Visual fg 000000", "Visual fg is " .. hex(visual.fg))
 
+say("-- nothing renders outside the ramp")
+-- Every group nvim knows about, resolved through its links to the colours that
+-- actually land on screen. A group lain never names keeps nvim's default, and
+-- nvim's defaults are not in the lain palette - OkMsg shipped a mint green into
+-- a theme with no green that way. This is the check that catches the next one.
+local ramp = require("lain.ramp")
+local known = {}
+for _, hexval in pairs(ramp) do
+  known[tonumber(hexval:sub(2), 16)] = true
+end
+
+-- Exempt, and only these: the vimscript expression-parser groups, which are
+-- hardcoded red-on-red markers for malformed expressions, and the 'redrawdebug'
+-- overlay. Neither is reachable in ordinary editing, and neither takes a
+-- colorscheme's colours if it were.
+local function exempt(name)
+  return name:match("^Nvim") ~= nil or name:match("^RedrawDebug") ~= nil
+end
+
+local outside = {}
+for name in pairs(vim.api.nvim_get_hl(0, {})) do
+  if not exempt(name) then
+    local hl = vim.api.nvim_get_hl(0, { name = name, link = false })
+    for _, key in ipairs({ "fg", "bg", "sp" }) do
+      if type(hl[key]) == "number" and not known[hl[key]] then
+        outside[#outside + 1] = name .. " " .. key .. "=#" .. hex(hl[key])
+      end
+    end
+  end
+end
+table.sort(outside)
+check(#outside == 0, "every rendered colour is a ramp step", "outside the ramp: " .. table.concat(outside, ", "))
+
 say("-- transparent")
 -- Reload through the real entry point, the way a user setting the option would.
 require("lain").setup({ transparent = true })

@@ -6,6 +6,20 @@ set -eu
 cd "$(dirname "$0")/.."
 fail=0
 
+# CI sets LINT_STRICT=1 so an absent tool fails instead of quietly skipping.
+# Skipping is right on a dev box that lacks one; it is how luacheck went unrun
+# in CI for as long as it did.
+strict="${LINT_STRICT:-0}"
+
+unavailable() {
+  if [ "$strict" = "1" ]; then
+    printf 'FAIL  %s %s\n' "$1" "$2"
+    fail=1
+  else
+    printf 'skip  %s %s\n' "$1" "$2"
+  fi
+}
+
 files="$(git ls-files '*.lua' 2>/dev/null)"
 if [ -z "$files" ]; then
   files="$(find . -type f -name '*.lua' -not -path './.git/*' -not -path './.omo/*' | sed 's|^\./||' | sort)"
@@ -26,18 +40,24 @@ if command -v stylua >/dev/null 2>&1; then
     fi
   done
 else
-  echo "skip  stylua not installed"
+  unavailable stylua "not installed"
 fi
 
-if command -v luacheck >/dev/null 2>&1; then
+if ! command -v luacheck >/dev/null 2>&1; then
+  unavailable luacheck "not installed"
+elif ! luacheck --version >/dev/null 2>&1; then
+  # A luacheck whose shebang picks an interpreter that cannot see its modules
+  # is on PATH and still useless. Say which, rather than failing as if the
+  # sources were at fault.
+  unavailable luacheck "on PATH but not runnable: interpreter cannot load its modules"
+else
+  # Flags live in .luacheckrc, picked up from the repo root.
   # shellcheck disable=SC2086
-  if luacheck --globals vim --max-line-length 120 $files; then
+  if luacheck $files; then
     echo "ok    luacheck"
   else
     fail=1
   fi
-else
-  echo "skip  luacheck not installed"
 fi
 
 tmp="$(mktemp)"
@@ -83,7 +103,7 @@ if command -v shellcheck >/dev/null 2>&1; then
     fail=1
   fi
 else
-  echo "skip  shellcheck not installed"
+  unavailable shellcheck "not installed"
 fi
 
 if command -v shfmt >/dev/null 2>&1; then
@@ -94,7 +114,7 @@ if command -v shfmt >/dev/null 2>&1; then
     fail=1
   fi
 else
-  echo "skip  shfmt not installed"
+  unavailable shfmt "not installed"
 fi
 
 [ "$fail" -eq 0 ] || {

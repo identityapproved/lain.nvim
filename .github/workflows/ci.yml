@@ -26,7 +26,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            shellcheck unzip
+            shellcheck unzip luarocks
+          sudo luarocks install luacheck
+          luacheck --version | head -1
           curl -fsSL -o /tmp/nvim.tar.gz \
             "https://github.com/neovim/neovim/releases/download/${{ matrix.nvim }}/nvim-linux-x86_64.tar.gz"
           sudo tar -xzf /tmp/nvim.tar.gz -C /usr/local --strip-components=1
@@ -40,8 +42,11 @@ jobs:
             "https://github.com/mvdan/sh/releases/download/v3.13.1/shfmt_v3.13.1_linux_amd64"
           sudo install -m 0755 /tmp/shfmt /usr/local/bin/shfmt
 
+      # LINT_STRICT turns a missing tool into a failure. Every tool the script
+      # knows about is installed above, so a skip here means the install broke,
+      # and a silent skip is exactly the failure mode worth catching.
       - name: Static checks
-        run: tests/lint.sh
+        run: LINT_STRICT=1 tests/lint.sh
 
       - name: Palette conformance
         run: nvim -l tests/palette.lua

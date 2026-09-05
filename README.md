@@ -112,6 +112,10 @@ runs palette conformance (no raw hex outside `lua/lain/ramp.lua`, every token
 bound to a ramp step), WCAG contrast over every rendered pair, a headless smoke
 load, and a headless `:checkhealth` that must come back clean.
 
+`tests/lint.sh` skips a tool it cannot find, which suits a dev box but would let
+CI pass having checked nothing. CI runs `LINT_STRICT=1 tests/lint.sh`, where a
+missing or unrunnable tool fails instead.
+
 ## Notes
 
 Unofficial fan project. Not affiliated with, endorsed by, or connected to the

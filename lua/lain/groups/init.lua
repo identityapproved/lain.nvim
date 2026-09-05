@@ -12,6 +12,27 @@ local modules = {
   "lain.groups.plugins",
 }
 
+-- Groups that paint the window ground. Under transparent the terminal supplies
+-- it instead. FloatShadow keeps its black: a shadow falling on the wallpaper is
+-- the whole point of a shadow.
+local ground = {
+  "DapUINormal",
+  "MasonBackdrop",
+  "Normal",
+  "TroubleNormal",
+}
+
+-- Module tables are require-cached and shared, so a variant copies before it
+-- edits. Mutating in place would leak into the next call.
+local function without_bg(spec)
+  local copy = {}
+  for k, v in pairs(spec) do
+    copy[k] = v
+  end
+  copy.bg = "NONE"
+  return copy
+end
+
 M.highlight_groups = function(config)
   local groups = {}
   for _, name in ipairs(modules) do
@@ -30,6 +51,13 @@ M.highlight_groups = function(config)
     groups.Visual = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill }
   end
   groups.VisualNOS = { link = "Visual" }
+  if config and config.transparent then
+    for _, name in ipairs(ground) do
+      if groups[name] then
+        groups[name] = without_bg(groups[name])
+      end
+    end
+  end
   return groups
 end
 

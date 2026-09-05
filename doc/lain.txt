@@ -60,6 +60,7 @@ Options are passed through the setup table:
     require("lain").setup({
       styles = { visual = "fill" },
       terminal_colors = true,
+      transparent = false,
     })
 <
 styles.visual (string, default "fill")        *lain-option-styles.visual*
@@ -68,6 +69,17 @@ styles.visual (string, default "fill")        *lain-option-styles.visual*
 
 terminal_colors (boolean, default true)       *lain-option-terminal_colors*
     Sets g:terminal_color_0 through g:terminal_color_15 on load.
+
+transparent (boolean, default false)              *lain-option-transparent*
+    Drops the background from the groups that paint the window ground -
+    Normal, and the plugin windows that restate it - so the terminal shows
+    through. Floats, popups and the statusline keep their surface ground:
+    they have to stay readable over whatever is behind the terminal.
+    FloatShadow keeps its black, since a shadow on the wallpaper is the
+    point of a shadow.
+
+    lain's ground is pure black, so this changes nothing against a black
+    terminal. It is for a translucent or image background.
 
 ==============================================================================
 TERMINAL                                                     *lain-terminal*

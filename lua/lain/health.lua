@@ -76,6 +76,7 @@ local function check_config()
   end
   health.ok("styles.visual = " .. resolved.styles.visual)
   health.ok("terminal_colors = " .. tostring(resolved.terminal_colors))
+  health.ok("transparent = " .. tostring(resolved.transparent))
   if resolved.terminal_colors then
     local unset = {}
     for i = 0, 15 do

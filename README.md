@@ -69,6 +69,7 @@ on a rose, and `#C1B48E` and `#B5A985` collapse onto one index. There is no
 | --- | --- | --- |
 | `styles.visual` | `"fill"` | Selection is an ochre fill with black text. `"tint"` is a dark tint with syntax left intact. |
 | `terminal_colors` | `true` | Sets `g:terminal_color_0` through `g:terminal_color_15`. |
+| `transparent` | `false` | Drops the background from the window ground so the terminal shows through. Floats, popups and the statusline keep their surface ground. |
 
 ## Plugins
 

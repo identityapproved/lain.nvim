@@ -65,6 +65,25 @@ local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
 check(hex(visual.bg) == "C1B48E", "Visual bg C1B48E", "Visual bg is " .. hex(visual.bg))
 check(hex(visual.fg) == "000000", "Visual fg 000000", "Visual fg is " .. hex(visual.fg))
 
+say("-- transparent")
+-- Reload through the real entry point, the way a user setting the option would.
+require("lain").setup({ transparent = true })
+vim.cmd.colorscheme("lain")
+local tnormal = vim.api.nvim_get_hl(0, { name = "Normal" })
+check(tnormal.bg == nil, "Normal has no bg", "Normal bg is " .. hex(tnormal.bg))
+check(hex(tnormal.fg) == "C1B48E", "Normal fg still C1B48E", "Normal fg is " .. hex(tnormal.fg))
+local tfloat = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
+check(hex(tfloat.bg) == "1A1A1A", "NormalFloat keeps its ground", "NormalFloat bg is " .. hex(tfloat.bg))
+local tshadow = vim.api.nvim_get_hl(0, { name = "FloatShadow" })
+check(hex(tshadow.bg) == "000000", "FloatShadow keeps its black", "FloatShadow bg is " .. hex(tshadow.bg))
+
+-- Back to the default, and the ground must return: the variant may not leak
+-- into the shared module tables.
+require("lain").setup({})
+vim.cmd.colorscheme("lain")
+local restored = vim.api.nvim_get_hl(0, { name = "Normal" })
+check(hex(restored.bg) == "000000", "Normal bg restored to 000000", "Normal bg is " .. hex(restored.bg))
+
 if fail > 0 then
   io.stdout:flush()
   vim.cmd("cquit!")

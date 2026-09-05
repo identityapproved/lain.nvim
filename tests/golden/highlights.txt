@@ -215,6 +215,10 @@ Comment fg=8A8A8A italic
 Conceal fg=4A4A4A
 Conditional -> Statement
 Constant fg=B5A985
+CratesNvimPopupEnabled fg=FFDCB9
+CratesNvimPopupPillBorder fg=965363
+CratesNvimPopupPillText fg=C1B48E bg=2A2A2A
+CratesNvimPopupTransitive fg=BA6A7B
 CurSearch fg=000000 bg=FFB1C3
 Cursor fg=000000 bg=C1B48E
 CursorColumn bg=1A1A1A
@@ -223,6 +227,12 @@ CursorLine bg=1A1A1A
 CursorLineFold -> CursorLine
 CursorLineNr fg=CE7688 bold
 CursorLineSign -> CursorLine
+DapBreakpoint fg=FFB1C3
+DapBreakpointCondition fg=CE7688
+DapBreakpointRejected fg=8A8A8A
+DapLogPoint fg=A49978
+DapStopped fg=CE7688
+DapStoppedLine bg=2A2A2A
 DapUIBreakpointsCurrentLine fg=000000 bg=C1B48E
 DapUIBreakpointsDisabledLine fg=8A8A8A
 DapUIBreakpointsInfo fg=A49978
@@ -399,6 +409,9 @@ LspReferenceText bg=2A2A2A
 LspReferenceWrite bg=2A2A2A
 LspSignatureActiveParameter bg=2A2A2A
 Macro -> PreProc
+MarkSignHL fg=FFB1C3
+MarkSignNumHL -> LineNr
+MarkVirtTextHL fg=8A8A8A
 MasonBackdrop bg=000000
 MasonError fg=FFB1C3
 MasonHeader fg=000000 bg=C1B48E bold
@@ -466,6 +479,18 @@ NvimDapVirtualTextChanged fg=CE7688
 NvimDapVirtualTextError fg=FFB1C3
 NvimDapVirtualTextInfo fg=A49978
 Operator fg=968C6E
+OutlineCurrent fg=A49978 bg=1A1A1A
+OutlineDetails fg=8A8A8A
+OutlineFoldMarker fg=CE7688
+OutlineGuides fg=7A7158
+OutlineHelpTip fg=8A8A8A
+OutlineJumpHighlight -> Visual
+OutlineKeymapHelpDisabled fg=8A8A8A
+OutlineKeymapHelpKey fg=FFB1C3
+OutlineLineno -> LineNr
+OutlineStatusError fg=FFB1C3
+OutlineStatusFt fg=B5A985
+OutlineStatusProvider fg=FFB1C3
 Pmenu fg=C1B48E bg=1A1A1A
 PmenuExtra fg=968C6E bg=1A1A1A
 PmenuExtraSel fg=000000 bg=C1B48E

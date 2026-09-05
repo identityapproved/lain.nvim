@@ -89,6 +89,26 @@ cream mode fills carrying black text, dim ochre for inactive sections.
 Every fg/bg pair clears WCAG 4.5:1.
 
 ==============================================================================
+PLUGINS                                                       *lain-plugins*
+==============================================================================
+
+Beyond the core and treesitter groups, lain styles these plugins:
+
+    blink.cmp, bufferline.nvim, crates.nvim, dashboard-nvim, flash.nvim,
+    fzf-lua, grug-far.nvim, lazy.nvim, marks.nvim, mason.nvim, mini.icons,
+    noice.nvim, nvim-dap, nvim-dap-ui, nvim-dap-virtual-text,
+    outline.nvim, snacks.nvim, todo-comments.nvim, trouble.nvim,
+    which-key.nvim
+
+Plugins that only link to core groups need nothing here; they follow
+Normal, Pmenu, FloatBorder and the diagnostic groups on their own. The
+list above covers the ones that name their own groups, or that ship
+hardcoded colors a colorscheme has to displace - crates.nvim's popup
+pills, for one. outline.nvim is a further case: it installs its defaults
+once at setup and never rebuilds them, so after a later :colorscheme its
+groups would be gone if lain did not define them.
+
+==============================================================================
 PALETTE                                                       *lain-palette*
 ==============================================================================
 

@@ -87,6 +87,21 @@ M.BufferLineWarningDiagnosticVisible = { fg = p.diag.warn, bg = p.ui.bg_surface 
 M.BufferLineWarningSelected = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill }
 M.BufferLineWarningVisible = { fg = p.diag.warn, bg = p.ui.bg_surface }
 
+-- crates.nvim links most of its groups to core ones, which lain already owns.
+-- These four ship hardcoded hex that survives any colorscheme, so they are the
+-- only ones worth restating.
+M.CratesNvimPopupEnabled = { fg = p.diag.ok }
+M.CratesNvimPopupPillBorder = { fg = p.ui.border }
+M.CratesNvimPopupPillText = { fg = p.ui.fg, bg = p.ui.bg_hover }
+M.CratesNvimPopupTransitive = { fg = p.syn.preproc }
+
+-- nvim-dap ships no highlights; these are the sign group names its docs use.
+M.DapBreakpoint = { fg = p.diag.error }
+M.DapBreakpointCondition = { fg = p.diag.warn }
+M.DapBreakpointRejected = { fg = p.ui.fg_muted }
+M.DapLogPoint = { fg = p.diag.info }
+M.DapStopped = { fg = p.diag.warn }
+M.DapStoppedLine = { bg = p.ui.bg_hover }
 M.DapUIBreakpointsCurrentLine = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill }
 M.DapUIBreakpointsDisabledLine = { fg = p.ui.fg_muted }
 M.DapUIBreakpointsInfo = { fg = p.syn.string }
@@ -187,6 +202,10 @@ M.LazyProgressTodo = { fg = p.ui.fg_muted }
 M.LazySpecial = { fg = p.syn.special }
 M.LazyWarning = { fg = p.diag.warn }
 
+M.MarkSignHL = { fg = p.ui.accent }
+M.MarkSignNumHL = { link = "LineNr" }
+M.MarkVirtTextHL = { fg = p.ui.fg_muted }
+
 M.MasonBackdrop = { bg = p.ui.bg }
 M.MasonError = { fg = p.diag.error }
 M.MasonHeader = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill, bold = true }
@@ -241,6 +260,21 @@ M.NoicePopupmenuBorder = { link = "FloatBorder" }
 M.NoicePopupmenuMatch = { fg = p.ui.accent }
 M.NoicePopupmenuSelected = { fg = p.ui.fg_on_fill, bg = p.ui.bg_fill }
 M.NoiceVirtualText = { fg = p.ui.fg_muted }
+
+-- outline.nvim installs its defaults once, at setup. A later :colorscheme
+-- clears them and nothing rebuilds them, so lain owns them outright.
+M.OutlineCurrent = { fg = p.syn.string, bg = p.ui.bg_surface }
+M.OutlineDetails = { fg = p.ui.fg_muted }
+M.OutlineFoldMarker = { fg = p.ui.fg_chrome }
+M.OutlineGuides = { fg = p.ui.rule }
+M.OutlineHelpTip = { fg = p.ui.fg_muted }
+M.OutlineJumpHighlight = { link = "Visual" }
+M.OutlineKeymapHelpDisabled = { fg = p.ui.fg_muted }
+M.OutlineKeymapHelpKey = { fg = p.syn.special }
+M.OutlineLineno = { link = "LineNr" }
+M.OutlineStatusError = { fg = p.diag.error }
+M.OutlineStatusFt = { fg = p.syn.type }
+M.OutlineStatusProvider = { fg = p.syn.special }
 
 M.SnacksNormal = { fg = p.ui.fg, bg = p.ui.bg_surface }
 M.SnacksNormalNC = { link = "SnacksNormal" }

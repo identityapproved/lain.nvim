@@ -70,6 +70,18 @@ on a rose, and `#C1B48E` and `#B5A985` collapse onto one index. There is no
 | `styles.visual` | `"fill"` | Selection is an ochre fill with black text. `"tint"` is a dark tint with syntax left intact. |
 | `terminal_colors` | `true` | Sets `g:terminal_color_0` through `g:terminal_color_15`. |
 
+## Plugins
+
+Beyond the core and treesitter groups, lain styles blink.cmp,
+bufferline.nvim, crates.nvim, dashboard-nvim, flash.nvim, fzf-lua,
+grug-far.nvim, lazy.nvim, marks.nvim, mason.nvim, mini.icons, noice.nvim,
+nvim-dap, nvim-dap-ui, nvim-dap-virtual-text, outline.nvim, snacks.nvim,
+todo-comments.nvim, trouble.nvim and which-key.nvim.
+
+Anything that only links to core groups needs no entry - it follows Normal,
+Pmenu, FloatBorder and the diagnostic groups already. The list is the set that
+names its own groups or ships hardcoded colors a colorscheme has to displace.
+
 ## Terminal colors
 
 The sixteen ANSI slots are the palette's terminal mapping and match the lain

@@ -7,6 +7,7 @@ M.defaults = {
   },
   terminal_colors = true,
   transparent = false,
+  on_highlights = nil,
 }
 
 function M.resolve(opts)
@@ -17,6 +18,7 @@ function M.resolve(opts)
     },
     terminal_colors = o.terminal_colors,
     transparent = o.transparent,
+    on_highlights = o.on_highlights,
   }
   if merged.terminal_colors == nil then
     merged.terminal_colors = M.defaults.terminal_colors
@@ -32,6 +34,9 @@ function M.resolve(opts)
   end
   if type(merged.transparent) ~= "boolean" then
     error("lain: transparent must be a boolean")
+  end
+  if merged.on_highlights ~= nil and type(merged.on_highlights) ~= "function" then
+    error("lain: on_highlights must be a function")
   end
   return merged
 end

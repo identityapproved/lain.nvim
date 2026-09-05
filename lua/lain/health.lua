@@ -112,6 +112,11 @@ local function check_config()
   health.ok("styles.visual = " .. resolved.styles.visual)
   health.ok("terminal_colors = " .. tostring(resolved.terminal_colors))
   health.ok("transparent = " .. tostring(resolved.transparent))
+  if resolved.on_highlights then
+    health.ok("on_highlights is set; groups may differ from stock lain")
+  else
+    health.ok("on_highlights = nil")
+  end
   if resolved.terminal_colors then
     local unset = {}
     for i = 0, 15 do

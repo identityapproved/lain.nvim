@@ -58,6 +58,9 @@ jobs:
       - name: Smoke
         run: tests/smoke.sh
 
+      - name: Hooks
+        run: tests/hooks.sh
+
       - name: Health
         run: tests/health.sh
 

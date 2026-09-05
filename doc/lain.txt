@@ -61,6 +61,7 @@ Options are passed through the setup table:
       styles = { visual = "fill" },
       terminal_colors = true,
       transparent = false,
+      on_highlights = nil,
     })
 <
 styles.visual (string, default "fill")        *lain-option-styles.visual*
@@ -80,6 +81,50 @@ transparent (boolean, default false)              *lain-option-transparent*
 
     lain's ground is pure black, so this changes nothing against a black
     terminal. It is for a translucent or image background.
+
+on_highlights (function, default nil)          *lain-option-on_highlights*
+    A hook run over the finished group table, so you can patch lain
+    without forking it. See |lain-on-highlights|.
+
+==============================================================================
+OVERRIDES                                                *lain-on-highlights*
+==============================================================================
+
+The palette is the theme and is not configurable. Individual groups are:
+on_highlights is handed the assembled table and the semantic palette, and
+mutates the table in place.
+>lua
+    require("lain").setup({
+      on_highlights = function(groups, palette)
+        groups.Comment = { fg = palette.syn.comment, italic = true }
+        groups["@keyword.return"] = { fg = palette.ui.accent, bold = true }
+        groups.MyPluginTitle = { fg = palette.ui.fg_chrome }
+      end,
+    })
+<
+The palette argument is the table documented under |lain-palette|: ui,
+syn, diag and diff. Use it rather than raw hex and an override tracks the
+ramp instead of drifting from it.
+
+The hook runs last, after the styles.visual variant and after transparent
+have been applied, so it can override those too - setting a bg on Normal
+puts the ground back under transparent. Groups it does not name are left
+alone, and names lain does not define are created.
+
+It runs on every load, over a table rebuilt each time, so removing the
+hook and reloading restores stock lain.
+
+Two failures are survivable and are reported rather than raised, because
+a mistake in a config is not a reason to hand back an unstyled editor:
+
+    the hook errors      what it wrote before the error still applies,
+                         and the rest of the groups load normally
+    a spec nvim rejects  that one group is skipped and named in the
+                         message; every other group still loads
+
+Both print through ErrorMsg and land in |:messages|. |:checkhealth| lain
+reports whether a hook is set, since it means the groups on screen are no
+longer stock lain.
 
 ==============================================================================
 TERMINAL                                                     *lain-terminal*

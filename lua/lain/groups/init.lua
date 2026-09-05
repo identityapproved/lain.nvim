@@ -1,4 +1,5 @@
--- Group merge: editor, syntax, treesitter, lsp, diff and plugins modules, with the Visual variant applied.
+-- Group merge: editor, syntax, treesitter, lsp, diff and plugins modules, with
+-- the Visual variant applied and the user's on_highlights hook run last.
 local p = require("lain.palette")
 
 local M = {}
@@ -56,6 +57,16 @@ M.highlight_groups = function(config)
       if groups[name] then
         groups[name] = without_bg(groups[name])
       end
+    end
+  end
+  -- Last word goes to the user. The hook mutates the assembled table, so it
+  -- sees the variants already applied and can override anything above it. An
+  -- error in someone's config is theirs to fix, not a reason to leave the
+  -- editor unthemed: report it and apply what the table holds.
+  if config and config.on_highlights then
+    local ok, err = pcall(config.on_highlights, groups, p)
+    if not ok then
+      require("lain").report("lain: on_highlights failed: " .. tostring(err))
     end
   end
   return groups

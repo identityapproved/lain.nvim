@@ -70,6 +70,35 @@ on a rose, and `#C1B48E` and `#B5A985` collapse onto one index. There is no
 | `styles.visual` | `"fill"` | Selection is an ochre fill with black text. `"tint"` is a dark tint with syntax left intact. |
 | `terminal_colors` | `true` | Sets `g:terminal_color_0` through `g:terminal_color_15`. |
 | `transparent` | `false` | Drops the background from the window ground so the terminal shows through. Floats, popups and the statusline keep their surface ground. |
+| `on_highlights` | `nil` | A hook over the finished group table. See below. |
+
+### Overrides
+
+The palette is the theme and is not configurable. Individual groups are.
+`on_highlights` is handed the assembled group table and the semantic palette,
+and mutates the table in place:
+
+```lua
+opts = {
+  on_highlights = function(groups, palette)
+    groups.Comment = { fg = palette.syn.comment, italic = true }
+    groups["@keyword.return"] = { fg = palette.ui.accent, bold = true }
+    groups.MyPluginTitle = { fg = palette.ui.fg_chrome }
+  end,
+}
+```
+
+Taking colors from the palette rather than raw hex keeps an override tracking
+the ramp instead of drifting from it.
+
+The hook runs last, after `styles.visual` and `transparent`, so it overrides
+those too - a `bg` on `Normal` puts the ground back under `transparent`. Groups
+it does not name are untouched, names lain does not define are created, and
+removing the hook restores stock lain on the next load.
+
+A hook that errors, or one that writes a spec nvim rejects, is reported through
+`ErrorMsg` rather than raised: the rest of the theme still loads. A rejected
+spec costs that one group, named in the message, and nothing else.
 
 ## Plugins
 

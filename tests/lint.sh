@@ -20,7 +20,10 @@ unavailable() {
   fi
 }
 
-files="$(git ls-files '*.lua' 2>/dev/null)"
+# --others picks up a file that exists but has not been staged yet, which is
+# exactly when a new test is most likely to be unformatted. --exclude-standard
+# keeps .gitignore honoured, so .omo/ and friends stay out.
+files="$(git ls-files --cached --others --exclude-standard '*.lua' 2>/dev/null)"
 if [ -z "$files" ]; then
   files="$(find . -type f -name '*.lua' -not -path './.git/*' -not -path './.omo/*' | sed 's|^\./||' | sort)"
 fi

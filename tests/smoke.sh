@@ -39,6 +39,7 @@ say("-- entry contract")
 check(vim.g.colors_name == "lain", "colors_name lain", "colors_name is " .. tostring(vim.g.colors_name))
 check(vim.o.termguicolors == true, "termguicolors on", "termguicolors off")
 check(vim.o.background == "dark", "background dark", "background is " .. tostring(vim.o.background))
+check(vim.o.winborder == "single", "winborder single", "winborder is " .. tostring(vim.o.winborder))
 
 say("-- messages")
 local bad = nil
@@ -116,6 +117,16 @@ require("lain").setup({})
 vim.cmd.colorscheme("lain")
 local restored = vim.api.nvim_get_hl(0, { name = "Normal" })
 check(hex(restored.bg) == "000000", "Normal bg restored to 000000", "Normal bg is " .. hex(restored.bg))
+
+say("-- border")
+-- false is the opt-out, and an opt-out that still writes the option is not one.
+vim.o.winborder = "double"
+require("lain").setup({ border = false })
+vim.cmd.colorscheme("lain")
+check(vim.o.winborder == "double", "border false leaves winborder alone", "winborder is " .. vim.o.winborder)
+require("lain").setup({})
+vim.cmd.colorscheme("lain")
+check(vim.o.winborder == "single", "winborder back to single", "winborder is " .. vim.o.winborder)
 
 if fail > 0 then
   io.stdout:flush()

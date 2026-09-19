@@ -169,6 +169,40 @@ for _, name in ipairs(sorted(shadows)) do
 end
 
 say("")
+say("-- border sets a vim option and reaches no highlight group")
+for _, style in ipairs({ "none", "single", "double", "solid" }) do
+  local moved = diff(base, build({ border = style }))
+  check(
+    next(moved) == nil,
+    "border " .. style .. " leaves every group alone",
+    "border " .. style .. " moved: " .. list(moved)
+  )
+end
+local off = diff(base, build({ border = false }))
+check(next(off) == nil, "border false leaves every group alone", "border false moved: " .. list(off))
+
+local function refuses(opts, what)
+  check(not pcall(config.resolve, opts), what .. " is refused", what .. " was accepted")
+end
+
+refuses({ border = "rounded" }, "border rounded")
+refuses({ border = "hexagonal" }, "an unknown border")
+refuses({ border = 3 }, "a non-string border")
+refuses({ border = true }, "border true")
+
+-- false has to survive the nil backfill the way transparent does.
+check(
+  config.resolve({ border = false }).border == false,
+  "border false survives the nil backfill",
+  "border false resolved to " .. tostring(config.resolve({ border = false }).border)
+)
+check(
+  config.resolve({}).border == "single",
+  "border defaults to single",
+  "border default is " .. tostring(config.resolve({}).border)
+)
+
+say("")
 say("-- the module tables are shared, so no variant may write through them")
 local again = build({})
 local leaked = diff(base, again)

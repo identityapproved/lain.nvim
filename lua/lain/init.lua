@@ -40,6 +40,12 @@ function M.load()
     table.sort(bad)
     M.report("lain: skipped bad highlight spec for " .. table.concat(bad, ", "))
   end
+  -- 'winborder' is the one vim option the theme takes a position on: empty is
+  -- not "no border" to every plugin - snacks and yazi read empty as invalid and
+  -- fall back to rounded. false leaves the option alone.
+  if M.config.border then
+    vim.o.winborder = M.config.border
+  end
   if M.config.terminal_colors then
     require("lain.terminal").apply()
   end

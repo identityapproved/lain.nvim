@@ -110,6 +110,14 @@ local function check_config()
     return
   end
   health.ok("styles.visual = " .. resolved.styles.visual)
+  health.ok("border = " .. tostring(resolved.border))
+  if resolved.border and vim.o.winborder ~= resolved.border then
+    health.warn("winborder is \"" .. vim.o.winborder .. "\", not " .. resolved.border, {
+      "lain sets it on load; something rewrote it afterwards.",
+      "An empty winborder is not 'no border': snacks.nvim and yazi.nvim read",
+      "empty as invalid and fall back to a rounded border.",
+    })
+  end
   health.ok("terminal_colors = " .. tostring(resolved.terminal_colors))
   health.ok("transparent = " .. tostring(resolved.transparent))
   if resolved.on_highlights then

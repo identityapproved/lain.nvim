@@ -59,6 +59,7 @@ Options are passed through the setup table:
 >lua
     require("lain").setup({
       styles = { visual = "fill" },
+      border = "single",
       terminal_colors = true,
       transparent = false,
       on_highlights = nil,
@@ -67,6 +68,22 @@ Options are passed through the setup table:
 styles.visual (string, default "fill")        *lain-option-styles.visual*
     The selection style. "fill": an ochre fill with black text. "tint": a
     dark tint, syntax colors intact.
+
+border (string|false, default "single")                *lain-option-border*
+    The window border lain sets 'winborder' to on load, so floats and
+    popups get square corners. One of "none", "single", "double" or
+    "solid"; false leaves 'winborder' untouched. "rounded" is refused by
+    name - lain draws square corners.
+
+    "none" and an unset 'winborder' are not the same thing. Neovim's
+    default is empty, and plugins that resolve their own border through
+    'winborder' - snacks.nvim and yazi.nvim among them - read empty as
+    invalid and fall back to rounded. Setting it to "none" is what
+    actually turns borders off.
+
+    Plugins that hardcode a border ignore 'winborder' entirely and need
+    their own option; which-key.nvim, fzf-lua and noice.nvim are the
+    common ones.
 
 terminal_colors (boolean, default true)       *lain-option-terminal_colors*
     Sets g:terminal_color_0 through g:terminal_color_15 on load.
